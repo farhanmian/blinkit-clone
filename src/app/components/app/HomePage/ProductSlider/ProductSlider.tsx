@@ -3,7 +3,6 @@ import React from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { ProductTypeList } from "../../../../../../store/types/type";
 import Slider from "react-slick";
-import { IconArrowRight, IconArrowLeft } from "@tabler/icons-react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -39,7 +38,7 @@ const ProductSlider: React.FC<{
       <Slider {...settings}>
         {categoryWiseProducts[categoryName].map((product) => {
           return (
-            <div className="px-2.5">
+            <div key={product.id} className="px-2.5">
               <ProductCard key={product.id} product={product} />
             </div>
           );

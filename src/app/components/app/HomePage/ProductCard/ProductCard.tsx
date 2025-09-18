@@ -3,21 +3,12 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { ProductType } from "../../../../../../store/types/type";
-import {
-  IconClock,
-  IconMinus,
-  IconPlus,
-  IconShoppingCart,
-  IconStopwatch,
-  IconTrash,
-} from "@tabler/icons-react";
+import { IconMinus, IconPlus, IconStopwatch } from "@tabler/icons-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { handleCartUpdate } from "../../../../../../utils/utils";
 
 const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
   const [isAdded, setIsAdded] = useState(0);
-  const router = useRouter();
   const handleAdd = () => {
     setIsAdded(isAdded + 1);
     handleCartUpdate(product);

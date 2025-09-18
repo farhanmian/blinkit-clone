@@ -34,13 +34,13 @@ const whyShopFromBlinkit = [
 ];
 
 type PageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
-const page = (props: PageProps) => {
-  const { id } = props.params;
+const page = async (props: PageProps) => {
+  const { id } = await props.params;
   const [product, setProduct] = useState<ProductType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isAdded, setIsAdded] = useState(0);
