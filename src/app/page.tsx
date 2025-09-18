@@ -8,8 +8,6 @@ export default async function Home() {
   const products: { products: ProductTypeList } = await productsData.json();
   const categoryWiseProducts: { [key: string]: ProductTypeList } = {};
 
-  console.log(products);
-
   products.products &&
     products.products?.forEach((item) => {
       const category = item.category;
@@ -19,8 +17,6 @@ export default async function Home() {
         categoryWiseProducts[item.category] = [item];
       }
     });
-
-  console.log("categoryWiseProducts", categoryWiseProducts);
 
   return (
     <main className="pt-4 mt-10">
