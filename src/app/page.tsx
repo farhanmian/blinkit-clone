@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ProductTypeList } from "../../store/types/type";
 import ProductCard from "./components/app/HomePage/ProductCard/ProductCard";
+import ProductSlider from "./components/app/HomePage/ProductSlider/ProductSlider";
 
 export default async function Home() {
   const productsData = await fetch("https://dummyjson.com/products");
@@ -27,15 +28,16 @@ export default async function Home() {
       <section className="container mx-auto">
         {Object.keys(categoryWiseProducts).map((categoryName, i) => {
           return (
-            <div key={i}>
-              <h3 className="text-2xl font-semibold capitalize">
+            <div key={i} className="mb-9">
+              <h3 className="text-2xl mb-4 ml-2 font-semibold capitalize">
                 {categoryName.split("-").join(" ")}
               </h3>
 
               <div>
-                {categoryWiseProducts[categoryName].map((product) => {
-                  return <ProductCard key={product.id} product={product} />;
-                })}
+                <ProductSlider
+                  categoryWiseProducts={categoryWiseProducts}
+                  categoryName={categoryName}
+                />
               </div>
             </div>
           );
